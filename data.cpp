@@ -143,6 +143,23 @@ json iex::stocks::book(const std::string& symbol) {
 	return jsonData;
 }
 
+//---CASH FLOW---//
+//Learn more: https://iexcloud.io/docs/api/#cash-flow
+
+json iex::cashFlow(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/cash-flow?token=" + key;
+
+	return jsonData;
+}
+
+//---
+
+
 //---QUOTE---//
 //Learn more: https://iexcloud.io/docs/api/#quote
 json iex::stocks::quote(const std::string& symbol) {
