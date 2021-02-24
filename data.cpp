@@ -218,6 +218,34 @@ json iex::financials(const std::string& symbol) {
 	return jsonData;
 }
 
+//---REPORTED FINANCIALS---//
+//Learn more: https://iexcloud.io/docs/api/#financials-as-reported
+//Filing input can be 10-K or 10-Q with an appended range or by itself. For exampe, '10-Q?last=2', '10-Q?from=2016-01-01', or '10-Q?on=2016-01-01'.
+json iex::reportedFinancials(const std::string& symbol, const std::string& filing) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/time-series/reported-financials/" + symbol + "/" + filing + "?token=" + key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
+
+//---FUND OWNERSHIP---//
+//Learn more: https://iexcloud.io/docs/api/#fund-ownership
+json iex::fundOwnership(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/fund-ownership?token=" + key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
 
 //---QUOTE---//
 //Learn more: https://iexcloud.io/docs/api/#quote

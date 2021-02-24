@@ -35,6 +35,8 @@ namespace iex {
 		json delayedQuote(const std::string& symbol);
 		json dividends(const std::string& symbol, const std::string& range);
 		json financials(const std::string& symbol);
+		json reportedFinancials(const std::string& symbol, const std::string& filing);
+		json fundOwnership(const std::string& symbol);
 		json quote(const std::string& symbol);
 
 	}
