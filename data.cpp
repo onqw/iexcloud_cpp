@@ -139,6 +139,7 @@ json iex::stocks::book(const std::string& symbol) {
 	std::string key(SANDBOX_KEY);
 
 	url += "/stock/" + symbol + "/book?token=" + key;
+	getRequest(jsonData, url);
 	
 	return jsonData;
 }
@@ -153,11 +154,69 @@ json iex::cashFlow(const std::string& symbol) {
 	std::string key(SANDBOX_KEY);
 
 	url += "/stock/" + symbol + "/cash-flow?token=" + key;
+	getRequest(jsonData, url);
 
 	return jsonData;
 }
 
-//---
+//---COMPANY---//
+//Learn more: https://iexcloud.io/docs/api/#company
+json iex::company(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/company?token=" + key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
+
+//---DELAYED QUOTE---//
+//Learn more: https://iexcloud.io/docs/api/#delayed-quote
+json iex::delayedQuote(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/delayed-quote?token=" key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
+
+//---DIVIDENDS---//
+//Learn more: https://iexcloud.io/docs/api/#dividends-basic
+json iex::dividends(const std::string& symbol, const std::string& range) {
+	json jsonData;
+
+	if (range == "next" || range == "1m" || range == "3m" || range == "6m" || range == "ytd" || range == "1y" || range == "2y" || range == "5y") {
+		std::string url(IEX_ENDPOINT);
+		std::string key(SANDBOX_KEY);
+
+		url += "/stock/" + symbol + "/dividends/" + rage + "?token=" + key;
+	} else {
+		std::cout << "Period provided is not a valid option. Valid options are: \"next\", \"1m\", \"3m\", \"6m\", \"ytd\", \"1y\", \"2y\", or \"5y\"." << std::endl;
+		exit(1);
+	}
+}
+
+//---FINANCIALS---//
+//Learn more: https://iexcloud.io/docs/api/#financials
+//This endpointn is from IEX 1.0 API, use the new API calls 'cash-flow, 'income' statement, and 'balance-sheet' for new data.
+json iex::financials(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/financials?token=" + key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
 
 
 //---QUOTE---//

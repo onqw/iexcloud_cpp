@@ -31,6 +31,10 @@ namespace iex {
 		json balanceSheet(const std::string& symbol);
 		json book(const std::string& book);
 		json cashFlow(const std::string& symbol);
+		json company(const std::string& symbol);
+		json delayedQuote(const std::string& symbol);
+		json dividends(const std::string& symbol, const std::string& range);
+		json financials(const std::string& symbol);
 		json quote(const std::string& symbol);
 
 	}
