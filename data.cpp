@@ -103,6 +103,46 @@ json iex::stocks::advancedFundamentals(const std::string& symbol, const std::str
 	return jsonData;
 }
 
+//---ADVANCED STATS---//
+//Learn more: https://iexcloud.io/docs/api/#advanced-stats
+json iex::stocks::advancedStats(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+	url += "/stock/" + symbol + "/advanced-stats?token=" + key;
+	iex::getRequest(jsonData, url);
+
+	return jsonData;
+}
+
+//---BALANCE SHEET---//
+//Learn more: https://iexcloud.io/docs/api/#balance-sheet
+json iex::stocks::balanceSheet(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/balance-sheet?token=" + key;
+	getRequest(jsonData, url);
+
+	return jsonData;
+}
+
+//---BOOK---//
+//Learn more: https://iexcloud.io/docs/api/#book
+json iex::stocks::book(const std::string& symbol) {
+	json jsonData;
+
+	std::string url(IEX_ENDPOINT);
+	std::string key(SANDBOX_KEY);
+
+	url += "/stock/" + symbol + "/book?token=" + key;
+	
+	return jsonData;
+}
+
 //---QUOTE---//
 //Learn more: https://iexcloud.io/docs/api/#quote
 json iex::stocks::quote(const std::string& symbol) {
